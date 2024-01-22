@@ -3,7 +3,7 @@ const https = require('https');
 const axios = require('axios');
 
 const app = express();
-const port = 3001;
+const port = 3000;
 
 app.use(express.static('public'));
 
@@ -55,22 +55,6 @@ app.get('/weather', function (req, res) {
                 const rainVolume = weatherdata.rain ? weatherdata.rain['1h'] || 0 : 0;
 
                 const mapUrl = `https://www.google.com/maps/embed/v1/view?key=AIzaSyDD1ogD8nPSLflYFgltd1HZVPDxEk9EkVU&center=${coordinates.lat},${coordinates.lon}&zoom=10`;
-
-
-                // res.write('<div class="weather-container">');
-                // res.write(`<h1>Temperature in ${cityName} is ${temp} C</h1>   <img src="${imageURL}" alt="Weather icon">`);
-                // // res.write(`<img src="${imageURL}" alt="Weather icon">`);
-                // res.write(`<h4>Feels like ${feelsLike} C</h4>`);
-                // res.write(`<h3>The weather is currently ${weatherdescription}</h3>`);
-                // res.write(`<h3>Humidity is ${humidity} %</h3>`);
-                // res.write(`<h3>Pressure is ${pressure} mb</h3>`);
-                // res.write(`<h3>Wind speed is ${windSpeed} m/s</h3>`);
-                // res.write(`<h3>Coordinates: Lat ${coordinates.lat}, Lon ${coordinates.lon}</h3>`);
-                // res.write(`<h3>Country code is ${countryCode}</h3>`);
-                // res.write(`<h3>Rain volume for the last 3 hours is ${rainVolume} mm</h3>`);
-                // res.write(`<iframe width="600" height="450" frameborder="0" style="border:0" src="${mapUrl}" allowfullscreen></iframe>`);
-                
-                // res.end();
                 const responseData = {
                     temp,
                     imageURL,
@@ -94,42 +78,6 @@ app.get('/weather', function (req, res) {
     });
 });
 
-// app.get('/bestsellers', async function (req, res) {
-//     try {
-//         const apiKey = 'WJowE5lwzxGfaRheBtK5tjoDyYCGYvS9';
-
-//         const response = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${apiKey}`);
-//         const books = response.data.results.books;
-
-//         // console.log('NYT Best Sellers List - Hardcover Fiction:');
-//         // books.forEach(book => {
-//         //     console.log(`Title: ${book.title}`);
-//         //     console.log(`Author(s): ${book.author}`);
-//         //     console.log(`Description: ${book.description}`);
-//         //     console.log('---');
-//         // });
-
-//         res.json(books);
-//     } catch (error) {
-//         console.error('Error getting NYT Best Sellers List:', error.message);
-//         res.status(500).json({ error: 'Internal Server Error' });
-//     }
-// });
-
-// app.get('/bestsellers', async function (req, res) {
-//     try {
-//         const apiKey = 'WJowE5lwzxGfaRheBtK5tjoDyYCGYvS9';
-
-//         const response = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json?api-key=${apiKey}`);
-//         const books = response.data.results.books;
-
-//         res.json(books);
-//     } catch (error) {
-//         console.error('Error getting NYT Best Sellers List:', error.message);
-//         res.status(500).json({ error: 'Internal Server Error' });
-//     }
-// });
-
 app.get('/bestsellers', async function (req, res) {
     try {
         const apiKey = 'WJowE5lwzxGfaRheBtK5tjoDyYCGYvS9';
@@ -148,35 +96,6 @@ app.get('/bestsellers', async function (req, res) {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
-
-
-// app.get('/artworks', async function (req, res) {
-//     try {
-//         const apiKey = '5jLUx1H6';
-
-//         const response = await axios.get(`https://www.rijksmuseum.nl/api/nl/collection?key=${apiKey}&involvedMaker=Rembrandt+van+Rijn`);
-
-//         const artworks = {
-//             elapsedMilliseconds: 0,
-//             count: response.data.count,
-//             artObjects: response.data.artObjects.map(artwork => ({
-//                 links: artwork.links,
-//                 id: artwork.id,
-//                 objectNumber: artwork.objectNumber,
-//                 title: artwork.title,
-//                 principalOrFirstMaker: artwork.principalOrFirstMaker,
-//                 longTitle: artwork.longTitle,
-//                 webImage: artwork.webImage,
-//                 productionPlaces: artwork.productionPlaces,
-//             })),
-//         };
-
-//         res.json(artworks);
-//     } catch (error) {
-//         console.error('Error getting artworks from Rijksmuseum API:', error.message);
-//         res.status(500).json({ error: 'Internal Server Error' });
-//     }
-// });
 
 app.get('/artworks', async function (req, res) {
     try {
