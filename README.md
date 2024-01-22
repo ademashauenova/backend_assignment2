@@ -64,8 +64,8 @@ The map is embedded using the Google Maps API.
 ### NYT Best Sellers Section
 Books from the NYT Best Sellers list are presented in two categories: Hardcover Fiction and Hardcover Nonfiction.
 
-# Rijksmuseum Section
+### Rijksmuseum Section
 Artworks by Rembrandt van Rijn from the Rijksmuseum API are displayed with details such as title, production places, and images.
 
-# Responsiveness
+## Responsiveness
 The website is designed to be responsive, with media queries adjusting panel sizes for optimal viewing on various screen sizes.
