@@ -1,4 +1,4 @@
-### Weather App Documentation
+# Weather App Documentation
 
 ## Table of Contents
 - Project Overview
@@ -29,38 +29,39 @@ The Weather App is a web application built using Express.js, Bootstrap, and jQue
 
 ## API Usage
 
-# Weather API
+### Weather API
 Endpoint: /weather
 Method: GET
 Parameters: cityName
 Response: JSON object containing weather details such as temperature, feels like, humidity, pressure, wind speed, and more.
 
-## Google Maps API
+### Google Maps API
 Method: GET
 Parameters: latitude, longitude
 Response: Map visually showcasing the location of cities based on latitude and longitude.
 
-# NYT Best Sellers API
+### NYT Best Sellers API
 Endpoint: /bestsellers
 Method: GET
 Parameters: type
 Response: JSON array containing details of books in the specified best sellers list.
 
-# Rijksmuseum API
+### Rijksmuseum API
 Endpoint: /artworks
 Method: GET
 Response: JSON object containing details of artworks by Rembrandt van Rijn from the Rijksmuseum API.
 
 
 ## Design Decisions
-# Navbar
+
+### Navbar
 The app features a responsive navigation bar fixed to the top, providing easy access to different sections: Weather, Book Bestsellers, and Rijksmuseum.
 
-# Weather Section
+### Weather Section
 Weather information is displayed in a card format, with temperature, feels like, weather description, humidity, pressure, wind speed, coordinates, country code, rain volume, and a map.
 The map is embedded using the Google Maps API.
 
-# NYT Best Sellers Section
+### NYT Best Sellers Section
 Books from the NYT Best Sellers list are presented in two categories: Hardcover Fiction and Hardcover Nonfiction.
 
 # Rijksmuseum Section
