@@ -15,6 +15,10 @@ app.get('/books', function (req, res) {
     res.sendFile(__dirname + '/views/books.html');
 });
 
+app.get('/museum', function (req, res) {
+    res.sendFile(__dirname + '/views/museum.html');
+});
+
 app.get('/weather', function (req, res) {
     const cityName = req.query.cityName;
 
@@ -145,6 +149,61 @@ app.get('/bestsellers', async function (req, res) {
     }
 });
 
+
+// app.get('/artworks', async function (req, res) {
+//     try {
+//         const apiKey = '5jLUx1H6';
+
+//         const response = await axios.get(`https://www.rijksmuseum.nl/api/nl/collection?key=${apiKey}&involvedMaker=Rembrandt+van+Rijn`);
+
+//         const artworks = {
+//             elapsedMilliseconds: 0,
+//             count: response.data.count,
+//             artObjects: response.data.artObjects.map(artwork => ({
+//                 links: artwork.links,
+//                 id: artwork.id,
+//                 objectNumber: artwork.objectNumber,
+//                 title: artwork.title,
+//                 principalOrFirstMaker: artwork.principalOrFirstMaker,
+//                 longTitle: artwork.longTitle,
+//                 webImage: artwork.webImage,
+//                 productionPlaces: artwork.productionPlaces,
+//             })),
+//         };
+
+//         res.json(artworks);
+//     } catch (error) {
+//         console.error('Error getting artworks from Rijksmuseum API:', error.message);
+//         res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// });
+
+app.get('/artworks', async function (req, res) {
+    try {
+        const apiKey = '5jLUx1H6';
+
+        const response = await axios.get(`https://www.rijksmuseum.nl/api/nl/collection?key=${apiKey}&involvedMaker=Rembrandt+van+Rijn`);
+
+        const artworks = {
+            elapsedMilliseconds: 0,
+            count: response.data.count,
+            artObjects: response.data.artObjects.map(artwork => ({
+                links: artwork.links,
+                id: artwork.id,
+                objectNumber: artwork.objectNumber,
+                title: artwork.title,
+                principalOrFirstMaker: artwork.principalOrFirstMaker,
+                webImage: artwork.webImage,
+                productionPlaces: artwork.productionPlaces,
+            })),
+        };
+
+        res.json(artworks);
+    } catch (error) {
+        console.error('Error getting artworks from Rijksmuseum API:', error.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 app.listen(port, function () {
     console.log(`Server started on port ${port}`);
