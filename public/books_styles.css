@@ -42,6 +42,13 @@ body {
 
 h1 {
     color: #333;
+    margin-left: 5%;
+}
+
+h2 {
+    color: #333;
+    margin-left: 7%;
+    margin-top: 3%;
 }
 
 .books-list {
@@ -50,11 +57,12 @@ h1 {
 }
 
 .book-item {
+    background-color: #f1d18a;
     margin-bottom: 20px;
-    border: 1px solid #ddd;
-    padding: 10px;
-    border-radius: 5px;
-    background-color: #f9f9f9;
+    border: 1px solid #f1d18a;
+    padding: 10px 20px 0 20px;
+    margin: 0 25px 20px 25px;
+    border-radius: 15px;
 }
 
 .book-title {
@@ -68,4 +76,12 @@ h1 {
 
 .book-description {
     color: #777;
+}
+
+
+footer {
+    padding: 1rem;
+    text-align: center;
+    bottom: 0;
+
 }

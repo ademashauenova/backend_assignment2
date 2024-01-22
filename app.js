@@ -90,22 +90,53 @@ app.get('/weather', function (req, res) {
     });
 });
 
+// app.get('/bestsellers', async function (req, res) {
+//     try {
+//         const apiKey = 'WJowE5lwzxGfaRheBtK5tjoDyYCGYvS9';
+
+//         const response = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${apiKey}`);
+//         const books = response.data.results.books;
+
+//         // console.log('NYT Best Sellers List - Hardcover Fiction:');
+//         // books.forEach(book => {
+//         //     console.log(`Title: ${book.title}`);
+//         //     console.log(`Author(s): ${book.author}`);
+//         //     console.log(`Description: ${book.description}`);
+//         //     console.log('---');
+//         // });
+
+//         res.json(books);
+//     } catch (error) {
+//         console.error('Error getting NYT Best Sellers List:', error.message);
+//         res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// });
+
+// app.get('/bestsellers', async function (req, res) {
+//     try {
+//         const apiKey = 'WJowE5lwzxGfaRheBtK5tjoDyYCGYvS9';
+
+//         const response = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-nonfiction.json?api-key=${apiKey}`);
+//         const books = response.data.results.books;
+
+//         res.json(books);
+//     } catch (error) {
+//         console.error('Error getting NYT Best Sellers List:', error.message);
+//         res.status(500).json({ error: 'Internal Server Error' });
+//     }
+// });
+
 app.get('/bestsellers', async function (req, res) {
     try {
-        // Set your Books API key
         const apiKey = 'WJowE5lwzxGfaRheBtK5tjoDyYCGYvS9';
+        let listType = req.query.type || 'hardcover-fiction';
+        if (listType !== 'hardcover-fiction' && listType !== 'hardcover-nonfiction') {
+            res.status(400).json({ error: 'Invalid list type specified' });
+            return;
+        }
 
-        // Get NYT Best Sellers List - Hardcover Fiction
-        const response = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/hardcover-fiction.json?api-key=${apiKey}`);
+        const response = await axios.get(`https://api.nytimes.com/svc/books/v3/lists/current/${listType}.json?api-key=${apiKey}`);
         const books = response.data.results.books;
-
-        // console.log('NYT Best Sellers List - Hardcover Fiction:');
-        // books.forEach(book => {
-        //     console.log(`Title: ${book.title}`);
-        //     console.log(`Author(s): ${book.author}`);
-        //     console.log(`Description: ${book.description}`);
-        //     console.log('---');
-        // });
 
         res.json(books);
     } catch (error) {
@@ -114,37 +145,6 @@ app.get('/bestsellers', async function (req, res) {
     }
 });
 
-app.get('/bookreviews/:isbn', async function (req, res) {
-    try {
-        const isbn = req.params.isbn;
-
-        // Set your Books API key
-        const apiKey = 'WJowE5lwzxGfaRheBtK5tjoDyYCGYvS9';
-
-        // Look up book reviews by ISBN
-        const response = await axios.get(`https://api.nytimes.com/svc/books/v3/reviews.json?isbn=${isbn}&api-key=${apiKey}`);
-        const reviews = response.data.results;
-
-        // if (reviews.length === 0) {
-        //     console.log('No reviews found for the book.');
-        // } else {
-        //     console.log(`Book Reviews for ISBN ${isbn}:`);
-        //     reviews.forEach(review => {
-        //         console.log(`Review by ${review.byline}:`);
-        //         console.log(`Publication Date: ${review.publication_dt}`);
-        //         console.log(`Summary: ${review.summary}`);
-        //         console.log('---');
-        //     });
-        // }
-
-        // res.json(reviews);
-        console.log('Book Reviews:', reviews);
-        res.json(reviews);
-    } catch (error) {
-        console.error('Error looking up book reviews:', error.message);
-        res.status(500).json({ error: 'Internal Server Error' });
-    }
-});
 
 app.listen(port, function () {
     console.log(`Server started on port ${port}`);

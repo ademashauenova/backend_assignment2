@@ -11,7 +11,7 @@
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-custom fixed-top">
-        <div class="navbar-brand mb-0 h1 pl-4">Weather Forecast</div>
+        <div class="navbar-brand mb-0 h1 pl-4">APIs</div>
         <button class="navbar-toggler justify-content-end" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -30,16 +30,21 @@
         </div>
     </nav>
     
-    <h1 class="pt-5">NYT Best Sellers Lists</h1>
+    <h1 class="pt-5 pl-3">NYT Best Sellers Lists</h1>
 
-    <h2>Hardcover Fiction</h2>
+    <h2 class="pl-5">Hardcover Fiction</h2>
     <ul id="hardcoverFictionList" class="books-list"></ul>
 
-    <h2>Hardcover Nonfiction</h2>
+    <h2 class="pl-5">Hardcover Nonfiction</h2>
     <ul id="hardcoverNonfictionList" class="books-list"></ul>
 
+    <footer class="mt-5 text-center">
+        <p>  Shauenova Adema SE-2204  </p>
+    </footer>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     <script>
-        // Fetch and display NYT Best Sellers List - Hardcover Fiction
         fetch('/bestsellers?type=hardcover-fiction')
             .then(response => response.json())
             .then(books => {
@@ -57,7 +62,6 @@
             })
             .catch(error => console.error('Error fetching Hardcover Fiction list:', error));
 
-        // Fetch and display NYT Best Sellers List - Hardcover Nonfiction
         fetch('/bestsellers?type=hardcover-nonfiction')
             .then(response => response.json())
             .then(books => {
