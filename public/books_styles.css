@@ -1,0 +1,71 @@
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #73b1c1;
+    margin: 0;
+    padding: 0;
+    padding-top: 50px;
+}
+
+.navbar {
+    background-color: #36626a;
+    padding: 10px 0;
+}
+
+.navbar-brand {
+    padding-left: 5%;
+    font-size: 1.5rem;
+}
+
+.navbar-toggler {
+    border: 1px solid #fff;
+}
+
+.navbar-toggler-icon {
+    background-color: #fff;
+}
+
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-item {
+    margin-right: 20px;
+}
+
+.nav-link {
+    color: #fff !important;
+}
+
+.nav-link:hover {
+    color: #ccc !important;
+}
+
+h1 {
+    color: #333;
+}
+
+.books-list {
+    list-style: none;
+    padding: 0;
+}
+
+.book-item {
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.book-title {
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.book-author {
+    color: #555;
+}
+
+.book-description {
+    color: #777;
+}
