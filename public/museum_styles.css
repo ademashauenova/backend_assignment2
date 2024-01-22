@@ -16,11 +16,11 @@ body {
 }
 
 .navbar-toggler {
-    border: 1px solid #fff;
+    border: 1px solid black;
 }
 
 .navbar-toggler-icon {
-    background-color: #fff;
+    background-color: black;
 }
 
 .navbar-nav {
